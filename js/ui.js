@@ -34,7 +34,7 @@ const displayProfileInfo = (profile) => {
     createdAt.textContent = `CREATED AT: ${formattedDate}`
     accountAge.textContent = `ACCOUNT AGE: ${yearDiff} years.`
 
-    profilePic.style.backgroundImage = url(`${avatar_url}`)
+    profilePic.style.backgroundImage = `url(${profile.avatar_url})`
     profilePic.style.display = "block"
 
     profileInfo.append(name, bio, company, location, followers, following, publicRepo, profileLink, createdAt, accountAge)

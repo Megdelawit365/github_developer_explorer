@@ -7,7 +7,8 @@ const fetchData = async (url) => {
                 case 404:
                     message = "Github user not found."
                     break
-                case 403 || 429:
+                case 403:
+                case 429:
                     message = "GitHub API rate limit reached. Please stop making unnecessary retries."
                     break
                 default:
@@ -29,11 +30,12 @@ const fetchData = async (url) => {
 }
 
 const fetchUserData = async (username) => {
-    fetchData(`https://api.github.com/users/${username}`)
+    return await fetchData(`https://api.github.com/users/${username}`)
 }
 
 
 const fetchRepositoryData = async (username) => {
-    fetchData(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`)
+    return await fetchData(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`)
 }
 
+export { fetchRepositoryData, fetchUserData }

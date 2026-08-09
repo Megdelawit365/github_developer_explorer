@@ -1,0 +1,64 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    width: 50%;
+    margin: auto;
+    padding: 2rem;
+}
+
+h1,
+p {
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    /* border-bottom: 4px dashed black; */
+    font-size: 2.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.search-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.search-bar * {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.5rem 1rem;
+}
+
+.search-bar button {
+    padding: 0.5rem 1rem;
+
+}
+
+.top {
+    display: flex;
+    gap: 2rem;
+}
+
+.profile-pic {
+    background-image: url('https://avatars.githubusercontent.com/u/583231?v=4');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 15rem;
+    height: 15rem;
+    border: 1px solid black;
+}
+
+.error {
+    font-size: 1.2rem;
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    /* display: none; */
+}

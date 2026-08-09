@@ -12,7 +12,6 @@ p {
 
 h1 {
     text-align: center;
-    /* border-bottom: 4px dashed black; */
     font-size: 2.6rem;
     margin-bottom: 0.5rem;
 }
@@ -45,7 +44,6 @@ h1 {
 }
 
 .profile-pic {
-    background-image: url('https://avatars.githubusercontent.com/u/583231?v=4');
     background-position: center;
     background-repeat: no-repeat;
     background-position: center;
@@ -53,6 +51,7 @@ h1 {
     width: 15rem;
     height: 15rem;
     border: 1px solid black;
+    display: none;
 }
 
 .error {

@@ -13,11 +13,14 @@ const totalForks = (repo) => {
     }, 0)
     return total
 }
-const mostStarredRepo = (repo) => {
-    const mostStarred = repo.reduce((highest, current) => {
-        return current.stargazers_count > highest.stargazers_count ? current : highest
-    })
-    return mostStarred
+const topFiveRepo = (repo) => {
+    let copyRepo = repo
+    copyRepo.sort((a, b) => b.stargazers_count - a.stargazers_count)
+
+    if (copyRepo.length <= 5) {
+        return copyRepo
+    }
+    return copyRepo(0, 6)
 }
 const mostFrequentLanguage = (repo) => {
     const freq = {}

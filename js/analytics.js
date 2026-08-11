@@ -43,4 +43,19 @@ const allLanguages = (repo) => {
     return Array.from(all)
 }
 
-export { totalRepositories, totalForks, totalStars, mostFrequentLanguage, topFiveRepo, allLanguages }
+const filterRepos = (repo, langFilter, sortFilter) => {
+    let filtered = [...repo]
+    if (langFilter !== "ALL") {
+        filtered = repo.filter(r => r.language === langFilter)
+    }
+    if (sortFilter === "SORT BY NAME") {
+        filtered.sort((a, b) => a.name > b.name ? 1 : -1)
+    } else if (sortFilter === "SORT BY STARS") {
+        filtered.sort((a, b) => b.stargazers_count - a.stargazers_count)
+    } else if (sortFilter === "RECENTLY UPDATED") {
+        filtered.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+    }
+    return filtered
+}
+
+export { totalRepositories, totalForks, totalStars, mostFrequentLanguage, topFiveRepo, allLanguages, filterRepos }

@@ -12,6 +12,8 @@ const displayProfileError = (error) => {
     profileError.textContent = error
 }
 const displayLoadingMessage = (info) => {
+    profileInfo.innerHTML = ""
+    repoInfo.innerHTML = ""
     if (info === "profile") {
         loadingProfile.textContent = "LOADING PROFILE..."
     }

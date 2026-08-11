@@ -41,17 +41,23 @@ h1 {
 .top {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .profile-pic {
     background-position: center;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     width: 15rem;
     height: 15rem;
     border: 1px solid black;
     display: none;
+    border-radius: 10%;
+}
+
+.profile-info {
+    width: 50%;
 }
 
 .error {

@@ -4,9 +4,28 @@ const profileError = document.querySelector('.profile-error')
 const profileInfo = document.querySelector('.profile-info')
 const profilePic = document.querySelector('.profile-pic')
 const repoInfo = document.querySelector('.repo-info')
+const loadingProfile = document.querySelector('.loading-profile')
+const loadingRepo = document.querySelector('.loading-repo')
+
 
 const displayProfileError = (error) => {
     profileError.textContent = error
+}
+const displayLoadingMessage = (info) => {
+    if (info === "profile") {
+        loadingProfile.textContent = "LOADING PROFILE..."
+    }
+    else if (info === "repo") {
+        loadingRepo.textContent = "LOADING REPOSITORY..."
+    }
+}
+const removeLoadingMessage = (info) => {
+    if (info === "profile") {
+        loadingProfile.textContent = ""
+    }
+    else if (info === "repo") {
+        loadingRepo.textContent = ""
+    }
 }
 
 const displayProfileInfo = (profile) => {
@@ -73,4 +92,4 @@ const displayRepositoryInfo = (repo) => {
 }
 
 
-export { displayProfileError, displayProfileInfo, displayRepositoryInfo }
+export { displayProfileError, displayProfileInfo, displayRepositoryInfo, displayLoadingMessage, removeLoadingMessage }

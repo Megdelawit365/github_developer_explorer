@@ -3,7 +3,7 @@ const searchInput = document.querySelector('.search-input')
 
 import { fetchRepositoryData } from "./githubApi.js"
 import { fetchUserData } from "./githubApi.js"
-import { displayProfileError, displayProfileInfo, displayRepositoryInfo } from "./ui.js"
+import { displayLoadingMessage, displayProfileError, displayProfileInfo, displayRepositoryInfo, removeLoadingMessage } from "./ui.js"
 
 searchButton.addEventListener('click', async () => {
     const username = searchInput.value
@@ -11,15 +11,22 @@ searchButton.addEventListener('click', async () => {
         displayProfileError("Enter a username first.")
         return
     }
+    displayLoadingMessage("profile")
+    displayLoadingMessage("repo")
+
     const [profile, repository] = await Promise.all([
         fetchUserData(username),
         fetchRepositoryData(username)
     ])
+
+    removeLoadingMessage("profile")
+    removeLoadingMessage("repo")
+
     if (!profile.success) {
         displayProfileError(profile.error)
         return
     }
-    console.log(profile)
+
     displayProfileInfo(profile.data)
     displayRepositoryInfo(repository.data)
 

@@ -14,17 +14,17 @@ const totalForks = (repo) => {
     return total
 }
 const topFiveRepo = (repo) => {
-    let copyRepo = repo
+    let copyRepo = [...repo]
     copyRepo.sort((a, b) => b.stargazers_count - a.stargazers_count)
 
     if (copyRepo.length <= 5) {
         return copyRepo
     }
-    return copyRepo(0, 6)
+    return copyRepo.slice(0, 5)
 }
 const mostFrequentLanguage = (repo) => {
     const freq = {}
-    const mostFreq = repo[0].language
+    let mostFreq = repo[0].language
     for (const r of repo) {
         if (freq[r.language]) {
             freq[r.language] += 1
@@ -43,4 +43,4 @@ const allLanguages = (repo) => {
     return Array.from(all)
 }
 
-export { totalRepositories, totalForks, totalStars, mostFrequentLanguage, mostStarredRepo, allLanguages }
+export { totalRepositories, totalForks, totalStars, mostFrequentLanguage, topFiveRepo, allLanguages }

@@ -67,3 +67,8 @@ h1 {
     font-weight: bold;
     /* display: none; */
 }
+
+.loading-profile,
+.loading-repo {
+    text-align: center;
+}

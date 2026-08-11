@@ -3,7 +3,7 @@ const searchInput = document.querySelector('.search-input')
 
 import { fetchRepositoryData } from "./githubApi.js"
 import { fetchUserData } from "./githubApi.js"
-import { displayProfileError, displayProfileInfo } from "./ui.js"
+import { displayProfileError, displayProfileInfo, displayRepositoryInfo } from "./ui.js"
 
 searchButton.addEventListener('click', async () => {
     const username = searchInput.value
@@ -21,6 +21,6 @@ searchButton.addEventListener('click', async () => {
     }
     console.log(profile)
     displayProfileInfo(profile.data)
-
+    displayRepositoryInfo(repository.data)
 
 })

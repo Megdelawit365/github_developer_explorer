@@ -6,7 +6,7 @@ const profilePic = document.querySelector('.profile-pic')
 const repoInfo = document.querySelector('.repo-info')
 const loadingProfile = document.querySelector('.loading-profile')
 const loadingRepo = document.querySelector('.loading-repo')
-
+const allRepos = document.querySelector('.all-repo')
 
 const displayProfileError = (error) => {
     profileError.textContent = error
@@ -93,5 +93,15 @@ const displayRepositoryInfo = (repo) => {
     repoInfo.append(totalRepo, totalStar, totalFork, freqLanguage, allLang, top5Repo)
 }
 
+const displayAllRepositories = (repo) => {
+    allRepos.innerHTML = ""
 
-export { displayProfileError, displayProfileInfo, displayRepositoryInfo, displayLoadingMessage, removeLoadingMessage }
+    for (const r of repo) {
+        const newR = document.createElement('li')
+        newR.textContent = r.name
+        allRepos.append(newR)
+    }
+}
+
+
+export { displayProfileError, displayProfileInfo, displayRepositoryInfo, displayLoadingMessage, removeLoadingMessage, displayAllRepositories }

@@ -1,6 +1,9 @@
+import { allLanguages, mostFrequentLanguage, topFiveRepo, totalForks, totalRepositories, totalStars } from "./analytics.js"
+
 const profileError = document.querySelector('.profile-error')
 const profileInfo = document.querySelector('.profile-info')
 const profilePic = document.querySelector('.profile-pic')
+const repoInfo = document.querySelector('.repo-info')
 
 const displayProfileError = (error) => {
     profileError.textContent = error
@@ -30,7 +33,7 @@ const displayProfileInfo = (profile) => {
     followers.textContent = `FOLLOWERS: ${profile.followers}`
     following.textContent = `FOLLOWING: ${profile.following}`
     publicRepo.textContent = `PUBLIC REPOSITORIES: ${profile.public_repos}`
-    profileLink.textContent = `PROFILE LINK: ${profile.url}`
+    profileLink.textContent = `PROFILE LINK: ${profile.html_url}`
     createdAt.textContent = `CREATED AT: ${formattedDate}`
     accountAge.textContent = `ACCOUNT AGE: ${yearDiff} years.`
 
@@ -40,7 +43,34 @@ const displayProfileInfo = (profile) => {
     profileInfo.append(name, bio, company, location, followers, following, publicRepo, profileLink, createdAt, accountAge)
 }
 
+const displayRepositoryInfo = (repo) => {
+    const totalRepo = document.createElement('p')
+    const totalStar = document.createElement('p')
+    const totalFork = document.createElement('p')
+    const freqLanguage = document.createElement('p')
+    const allLang = document.createElement('p')
+    const top5Repo = document.createElement('ol')
+
+    totalRepo.textContent = `TOTAL REPOSITORIES : ${totalRepositories(repo)}`
+    totalStar.textContent = `TOTAL STARS : ${totalStars(repo)}`
+    totalFork.textContent = `TOTAL FORKS : ${totalForks(repo)}`
+    freqLanguage.textContent = `MOST FREQUENT LANGUAGE : ${mostFrequentLanguage(repo)}`
+    allLang.textContent = `ALL LANGUAGES : ${allLanguages(repo).join(", ")}`
+
+    const repos = topFiveRepo(repo)
+    if (repos.length == 0) {
+        top5Repo.textContent = "No repositories found."
+    } else {
+        for (const r of repos) {
+            const newR = document.createElement('li')
+            newR.textContent = `${r.name} (${r.stargazers_count} stars)`
+            top5Repo.append(newR)
+        }
+
+    }
+
+    repoInfo.append(totalRepo, totalStar, totalFork, freqLanguage, allLang, top5Repo)
+}
 
 
-
-export { displayProfileError, displayProfileInfo }
+export { displayProfileError, displayProfileInfo, displayRepositoryInfo }
